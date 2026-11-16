@@ -204,18 +204,23 @@ export const HeroSection: React.FC = () => {
         <div className="flex items-start justify-between gap-2" style={{ minHeight: "330px" }}>
           {/* Left Column */}
           <div className="flex flex-col justify-start flex-1 min-w-0 pr-1">
-            {/* Hero Name Typography */}
-            <div className="flex flex-col mb-1 overflow-visible">
-              {HERO_NAME_LINES_MOBILE.map(({ word, indent }, idx) => (
+            {/* Hero Name Typography - Cascading Stair-Step matching reference */}
+            <div className="flex flex-col mb-1 overflow-visible select-none">
+              {HERO_NAME_LINES_MOBILE.map(({ word }, idx) => (
                 <div key={word} className="overflow-visible leading-none">
                   <div
                     className={`hero-word-up font-display tracking-tight uppercase whitespace-nowrap ${
                       idx === 1 ? "text-[#ff4500]" : "text-[#f0e8dc]"
                     }`}
                     style={{
-                      fontSize: "clamp(2rem, 8.8vw, 3.2rem)",
-                      paddingLeft: `${indent}px`,
-                      lineHeight: 0.88,
+                      fontSize: "clamp(1.95rem, 8vw, 2.85rem)",
+                      paddingLeft:
+                        idx === 0
+                          ? "0px"
+                          : idx === 1
+                          ? "clamp(20px, 6.5vw, 32px)"
+                          : "clamp(40px, 13vw, 64px)",
+                      lineHeight: 0.86,
                       animationDelay: `${0.06 + idx * 0.05}s`,
                     }}
                   >
