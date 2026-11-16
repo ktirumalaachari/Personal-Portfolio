@@ -14,7 +14,6 @@ import LanyardIdCard from "./LanyardIdCard";
 export const HeroSection: React.FC = () => {
   const lenis = useLenis();
   const [roleIdx, setRoleIdx] = useState(0);
-  const [mobileCardTab, setMobileCardTab] = useState<"id" | "code">("id");
 
   useEffect(() => {
     const intervalId = setInterval(() => {
@@ -188,7 +187,7 @@ export const HeroSection: React.FC = () => {
         </div>
       </div>
 
-      {/* Mobile Layout (lg:hidden) */}
+      {/* Mobile Layout (lg:hidden) matching original portfolio split view style */}
       <div className="lg:hidden flex-1 flex flex-col px-5 pt-3 pb-8">
         {/* Category Pill */}
         <div
@@ -201,206 +200,173 @@ export const HeroSection: React.FC = () => {
           </span>
         </div>
 
-        {/* Hero Name Typography - Full Width, No Truncation */}
-        <div className="flex flex-col mb-1">
-          {HERO_NAME_LINES_MOBILE.map(({ word, indent }, idx) => (
-            <div key={word} className="overflow-visible leading-none">
+        {/* Mobile Split View: Left Column (Name + Role + profile.ts) | Right Column (Hanging ID Card) */}
+        <div className="flex items-start justify-between gap-2" style={{ minHeight: "330px" }}>
+          {/* Left Column */}
+          <div className="flex flex-col justify-start flex-1 min-w-0 pr-1">
+            {/* Hero Name Typography */}
+            <div className="flex flex-col mb-1 overflow-visible">
+              {HERO_NAME_LINES_MOBILE.map(({ word, indent }, idx) => (
+                <div key={word} className="overflow-visible leading-none">
+                  <div
+                    className={`hero-word-up font-display tracking-tight uppercase whitespace-nowrap ${
+                      idx === 1 ? "text-[#ff4500]" : "text-[#f0e8dc]"
+                    }`}
+                    style={{
+                      fontSize: "clamp(2rem, 8.8vw, 3.2rem)",
+                      paddingLeft: `${indent}px`,
+                      lineHeight: 0.88,
+                      animationDelay: `${0.06 + idx * 0.05}s`,
+                    }}
+                  >
+                    {word}
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Dynamic Role Pill */}
+            <div
+              className="hero-fade-in flex items-center gap-2 mt-3 mb-2.5"
+              style={{ animationDelay: "0.14s" }}
+            >
+              <span className="font-mono text-xs tracking-widest text-[#7a746d]">
+                {"//"}
+              </span>
               <div
-                className={`hero-word-up font-display tracking-tight uppercase whitespace-nowrap ${
-                  idx === 1 ? "text-[#ff4500]" : "text-[#f0e8dc]"
-                }`}
-                style={{
-                  fontSize: "clamp(2.4rem, 11vw, 3.8rem)",
-                  paddingLeft: `${indent}px`,
-                  lineHeight: 0.9,
-                  animationDelay: `${0.06 + idx * 0.05}s`,
-                }}
+                className="relative overflow-hidden"
+                style={{ minWidth: "150px", height: "26px" }}
               >
-                {word}
+                <AnimatePresence mode="wait" initial={false}>
+                  <motion.span
+                    key={roleIdx}
+                    initial={{ y: 20, opacity: 0, scale: 0.92 }}
+                    animate={{ y: 0, opacity: 1, scale: 1 }}
+                    exit={{ y: -18, opacity: 0, scale: 0.95 }}
+                    transition={BOUNCE_SPRING}
+                    className="absolute inset-0 flex items-center"
+                  >
+                    <span
+                      className="font-mono text-[0.55rem] sm:text-[0.62rem] tracking-[0.12em] uppercase font-bold px-2.5 py-0.5 rounded shadow-[0_0_12px_rgba(255,69,0,0.3)] whitespace-nowrap"
+                      style={{
+                        background: "#ff4500",
+                        color: "#0c0c0c",
+                      }}
+                    >
+                      {HERO_ROLES[roleIdx]}
+                    </span>
+                  </motion.span>
+                </AnimatePresence>
               </div>
             </div>
-          ))}
-        </div>
 
-        {/* Dynamic Role Pill */}
-        <div
-          className="hero-fade-in flex items-center gap-2.5 mt-3 mb-4"
-          style={{ animationDelay: "0.14s" }}
-        >
-          <span className="font-mono text-xs tracking-widest text-[#7a746d]">
-            {"//"}
-          </span>
-          <div
-            className="relative overflow-hidden"
-            style={{ minWidth: "190px", height: "30px" }}
-          >
-            <AnimatePresence mode="wait" initial={false}>
-              <motion.span
-                key={roleIdx}
-                initial={{ y: 22, opacity: 0, scale: 0.92 }}
-                animate={{ y: 0, opacity: 1, scale: 1 }}
-                exit={{ y: -20, opacity: 0, scale: 0.95 }}
-                transition={BOUNCE_SPRING}
-                className="absolute inset-0 flex items-center"
-              >
-                <span
-                  className="font-mono text-[0.65rem] sm:text-xs tracking-[0.14em] uppercase font-bold px-3 py-1 rounded shadow-[0_0_15px_rgba(255,69,0,0.35)] whitespace-nowrap"
-                  style={{
-                    background: "#ff4500",
-                    color: "#0c0c0c",
-                  }}
-                >
-                  {HERO_ROLES[roleIdx]}
+            {/* Mobile profile.ts Code Terminal */}
+            <div
+              className="hero-fade-up mt-1 w-full max-w-[225px] rounded-lg border border-[#2a2a2a] overflow-hidden shadow-lg bg-[#141414]"
+              style={{ animationDelay: "0.2s" }}
+            >
+              <div className="flex items-center gap-1.5 px-2.5 py-1.5 bg-[#1c1c1c] border-b border-[#2a2a2a]">
+                <div className="w-1.5 h-1.5 rounded-full bg-[#FF5F57]" />
+                <div className="w-1.5 h-1.5 rounded-full bg-[#FEBC2E]" />
+                <div className="w-1.5 h-1.5 rounded-full bg-[#28C840]" />
+                <span className="font-mono text-[0.48rem] tracking-widest uppercase text-[#7a746d] ml-auto">
+                  profile.ts
                 </span>
-              </motion.span>
-            </AnimatePresence>
-          </div>
-        </div>
-
-        {/* Centerpiece Showcase: Tab Switcher between Student ID Card and Profile.ts */}
-        <div className="w-full my-1">
-          <div className="flex items-center justify-center gap-2 mb-2.5">
-            <button
-              type="button"
-              onClick={() => {
-                navigator.vibrate?.(20);
-                setMobileCardTab("id");
-              }}
-              className={`font-mono text-[10px] tracking-wider uppercase px-3 py-1 rounded-full transition-all cursor-pointer ${
-                mobileCardTab === "id"
-                  ? "bg-[#ff4500] text-black font-bold shadow-[0_0_12px_rgba(255,69,0,0.4)]"
-                  : "bg-white/5 text-[#c8bfb3] border border-white/10 hover:border-[#ff4500]/40"
-              }`}
-            >
-              Identity Card
-            </button>
-            <button
-              type="button"
-              onClick={() => {
-                navigator.vibrate?.(20);
-                setMobileCardTab("code");
-              }}
-              className={`font-mono text-[10px] tracking-wider uppercase px-3 py-1 rounded-full transition-all cursor-pointer ${
-                mobileCardTab === "code"
-                  ? "bg-[#ff4500] text-black font-bold shadow-[0_0_12px_rgba(255,69,0,0.4)]"
-                  : "bg-white/5 text-[#c8bfb3] border border-white/10 hover:border-[#ff4500]/40"
-              }`}
-            >
-              profile.ts
-            </button>
-          </div>
-
-          <AnimatePresence mode="wait">
-            {mobileCardTab === "id" ? (
-              <motion.div
-                key="id"
-                initial={{ opacity: 0, scale: 0.96 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.96 }}
-                transition={{ duration: 0.2 }}
-                className="hero-lanyard-drop relative w-full h-[310px] overflow-hidden flex items-start justify-center"
-              >
-                <div
-                  style={{
-                    position: "absolute",
-                    top: 0,
-                    left: "50%",
-                    transform: "translateX(-50%) scale(0.66)",
-                    transformOrigin: "top center",
-                    width: "320px",
-                  }}
-                >
-                  <LanyardIdCard />
-                </div>
-              </motion.div>
-            ) : (
-              <motion.div
-                key="code"
-                initial={{ opacity: 0, scale: 0.96 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.96 }}
-                transition={{ duration: 0.2 }}
-                className="w-full max-w-sm mx-auto rounded-xl border border-[#2a2a2a] overflow-hidden shadow-xl my-2"
-              >
-                <div className="flex items-center gap-1.5 px-3 py-2 bg-[#1c1c1c] border-b border-[#2a2a2a]">
-                  <div className="w-2.5 h-2.5 rounded-full bg-[#FF5F57]" />
-                  <div className="w-2.5 h-2.5 rounded-full bg-[#FEBC2E]" />
-                  <div className="w-2.5 h-2.5 rounded-full bg-[#28C840]" />
-                  <span className="font-mono text-[10px] tracking-widest uppercase text-[#7a746d] ml-auto">
-                    profile.ts
+              </div>
+              <div className="p-2.5 font-mono text-[0.52rem] leading-[1.65] bg-[#141414] text-left">
+                <p>
+                  <span className="text-[#ff4500]">const</span>{" "}
+                  <span className="text-[#c8bfb3]">Developer</span> = {"{"}
+                </p>
+                <p className="pl-2.5">
+                  <span className="text-[#569CD6]">name</span>:{" "}
+                  <span className="text-[#ffd600]">&quot;K Tirumala Achari&quot;</span>,
+                </p>
+                <p className="pl-2.5">
+                  <span className="text-[#569CD6]">university</span>:{" "}
+                  <span className="text-[#ffd600]">&quot;NIST University&quot;</span>,
+                </p>
+                <p className="pl-2.5">
+                  <span className="text-[#569CD6]">cgpa</span>:{" "}
+                  <span className="text-[#ffd600]">7.15</span>,
+                </p>
+                <p className="pl-2.5">
+                  <span className="text-[#569CD6]">role</span>:{" "}
+                  <span className="text-[#ffd600]">Software Developer</span>,
+                </p>
+                <p className="pl-2.5">
+                  <span className="text-[#569CD6]">available</span>:{" "}
+                  <span className="text-[#ff4500]">true</span>,{" "}
+                  <span className="italic text-[#4A9955] text-[0.46rem]">
+                    {"// open to work"}
                   </span>
-                </div>
-                <div className="p-3.5 font-mono text-[11px] leading-[1.8] bg-[#141414] text-left">
-                  <p>
-                    <span className="text-[#ff4500]">const</span>{" "}
-                    <span className="text-[#c8bfb3]">Developer</span> = {"{"}
-                  </p>
-                  <p className="pl-4">
-                    <span className="text-[#569CD6]">name</span>:{" "}
-                    <span className="text-[#ffd600]">&quot;K Tirumala Achari&quot;</span>,
-                  </p>
-                  <p className="pl-4">
-                    <span className="text-[#569CD6]">university</span>:{" "}
-                    <span className="text-[#ffd600]">&quot;NIST University&quot;</span>,
-                  </p>
-                  <p className="pl-4">
-                    <span className="text-[#569CD6]">cgpa</span>:{" "}
-                    <span className="text-[#ffd600]">7.15</span>,
-                  </p>
-                  <p className="pl-4">
-                    <span className="text-[#569CD6]">role</span>:{" "}
-                    <span className="text-[#ffd600]">Software Developer</span>,
-                  </p>
-                  <p className="pl-4">
-                    <span className="text-[#569CD6]">available</span>:{" "}
-                    <span className="text-[#ff4500]">true</span>,{" "}
-                    <span className="italic text-[#4A9955] text-[10px]">
-                      {"// open to work"}
-                    </span>
-                  </p>
-                  <p>{"}"}</p>
-                </div>
-              </motion.div>
-            )}
-          </AnimatePresence>
+                </p>
+                <p>{"}"}</p>
+              </div>
+            </div>
+          </div>
+
+          {/* Right Column: Hanging Lanyard Student Identity Card */}
+          <div
+            className="hero-lanyard-drop relative shrink-0"
+            style={{
+              width: "140px",
+              height: "330px",
+              overflow: "hidden",
+              animationDelay: "0.1s",
+            }}
+          >
+            <div
+              style={{
+                position: "absolute",
+                top: 0,
+                left: "50%",
+                transform: "translateX(-50%) scale(0.48)",
+                transformOrigin: "top center",
+                width: "300px",
+              }}
+            >
+              <LanyardIdCard />
+            </div>
+          </div>
         </div>
 
         {/* Mobile Subtitle & Tagline */}
-        <div className="hero-fade-up my-4 text-left" style={{ animationDelay: "0.22s" }}>
-          <p className="font-body text-[#f0e8dc] text-xs sm:text-sm font-semibold leading-relaxed">
+        <div className="hero-fade-up mt-6 mb-5 text-left" style={{ animationDelay: "0.22s" }}>
+          <p className="font-body text-[#f0e8dc] text-sm sm:text-base font-bold leading-snug">
             {PROFILE_INFO.subtitle}
           </p>
-          <p className="font-body text-[#c8bfb3] text-xs leading-relaxed mt-1">
+          <p className="font-body text-[#c8bfb3] text-xs sm:text-sm leading-relaxed mt-1">
             {PROFILE_INFO.tagline}
           </p>
         </div>
 
-        {/* Mobile Action Buttons */}
+        {/* Stacked Mobile Action Buttons matching screenshot */}
         <div
-          className="hero-bounce-in flex items-center gap-3 mb-6"
+          className="hero-bounce-in flex flex-col gap-3 mb-6"
           style={{ animationDelay: "0.26s" }}
         >
           <a
             href="#work"
-            className="btn-primary text-xs py-3 px-5 flex-1 text-center justify-center font-bold tracking-wider"
+            className="btn-primary text-xs sm:text-sm py-3.5 px-6 w-full text-center justify-center font-bold tracking-wider rounded-lg"
             onClick={(e) => {
               e.preventDefault();
               navigator.vibrate?.(30);
               lenis?.scrollTo("#work");
             }}
           >
-            View Projects ↗
+            VIEW PROJECTS ↗
           </a>
           <a
             href="#contact"
-            className="btn-outline text-xs py-3 px-5 flex-1 text-center justify-center font-bold tracking-wider"
+            className="btn-outline text-xs sm:text-sm py-3.5 px-6 w-full text-center justify-center font-bold tracking-wider rounded-lg border border-[#2a2a2a] hover:border-[#ff4500]"
             onClick={(e) => {
               e.preventDefault();
               navigator.vibrate?.(30);
               lenis?.scrollTo("#contact");
             }}
           >
-            Get in Touch
+            GET IN TOUCH
           </a>
         </div>
       </div>

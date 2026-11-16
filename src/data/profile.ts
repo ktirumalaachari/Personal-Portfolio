@@ -32,8 +32,8 @@ export const HERO_NAME_LINES_DESKTOP = [
 
 export const HERO_NAME_LINES_MOBILE = [
   { word: "KOTTURTI", indent: 0 },
-  { word: "TIRUMALA", indent: 14 },
-  { word: "ACHARI", indent: 28 },
+  { word: "TIRUMALA", indent: 12 },
+  { word: "ACHARI", indent: 22 },
 ] as const;
 
 export const HERO_STATS: HeroStat[] = [
