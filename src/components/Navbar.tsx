@@ -94,7 +94,9 @@ export const Navbar: React.FC = () => {
     <>
       <header
         className={`hero-nav-in fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          scrolled ? "bg-[#0c0c0c]/92 backdrop-blur-md border-b border-[#222]" : "bg-transparent"
+          scrolled || mobileMenuOpen
+            ? "bg-[#0c0c0c]/95 backdrop-blur-md border-b border-[#222]"
+            : "bg-transparent"
         }`}
       >
         <div className="w-full px-4 sm:px-6 md:px-12 h-14 flex items-center justify-between">
@@ -103,19 +105,19 @@ export const Navbar: React.FC = () => {
             {/* Mobile Navigation Button (LEFT) */}
             <motion.button
               type="button"
-              whileTap={{ scale: 0.9 }}
-              transition={{ type: "spring", stiffness: 420, damping: 22 }}
+              whileTap={{ scale: 0.92 }}
+              transition={{ type: "spring", stiffness: 450, damping: 22 }}
               aria-label={mobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
               onClick={() => {
-                navigator.vibrate?.(30);
+                navigator.vibrate?.(25);
                 setMobileMenuOpen((prev) => !prev);
               }}
-              className="md:hidden text-[#c8bfb3] hover:text-[#ff4500] transition-colors p-2 -ml-2 cursor-pointer flex items-center justify-center focus:outline-none"
+              className="md:hidden w-9 h-9 flex items-center justify-center rounded-lg border border-white/10 bg-white/[0.04] text-[#f0e8dc] hover:text-[#ff4500] hover:border-[#ff4500]/50 active:bg-white/10 transition-all cursor-pointer focus:outline-none"
             >
               {mobileMenuOpen ? (
-                <X size={24} className="text-[#ff4500]" />
+                <X size={20} className="text-[#ff4500] stroke-[2.5]" />
               ) : (
-                <Menu size={24} />
+                <Menu size={20} className="text-[#f0e8dc] stroke-[2.2]" />
               )}
             </motion.button>
 
@@ -139,13 +141,13 @@ export const Navbar: React.FC = () => {
             <motion.button
               type="button"
               whileHover={{ scale: 1.04, y: -1 }}
-              whileTap={{ scale: 0.96 }}
-              transition={{ type: "spring", stiffness: 400, damping: 20 }}
+              whileTap={{ scale: 0.95 }}
+              transition={{ type: "spring", stiffness: 420, damping: 20 }}
               onClick={() => {
                 navigator.vibrate?.(30);
                 setResumeModalOpen(true);
               }}
-              className="btn-outline text-[11px] md:text-xs py-1.5 md:py-2 px-3.5 md:px-6 font-bold tracking-[0.14em] md:tracking-[0.16em] cursor-pointer"
+              className="btn-outline text-[11px] md:text-xs py-1.5 md:py-2 px-3.5 md:px-6 font-bold tracking-[0.14em] md:tracking-[0.16em] cursor-pointer hover:border-[#ff4500] hover:text-[#ff4500] transition-all"
             >
               RÉSUMÉ ↗
             </motion.button>
@@ -157,11 +159,12 @@ export const Navbar: React.FC = () => {
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -16 }}
+            data-lenis-prevent
+            initial={{ opacity: 0, y: -12 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -14 }}
-            transition={{ type: "spring", stiffness: 320, damping: 26 }}
-            className="fixed inset-0 z-40 bg-[#0c0c0c] flex flex-col pt-16 px-6"
+            exit={{ opacity: 0, y: -12 }}
+            transition={{ type: "spring", stiffness: 350, damping: 28 }}
+            className="fixed inset-0 z-40 bg-[#0c0c0c]/98 backdrop-blur-xl flex flex-col pt-16 px-6 overflow-y-auto menu-overlay-scroller"
           >
             <div className="h-px bg-[#222]" />
             <nav className="flex flex-col pt-8 gap-0" aria-label="Mobile navigation">
@@ -169,14 +172,14 @@ export const Navbar: React.FC = () => {
                 <motion.a
                   key={item.id}
                   href={`#${item.id}`}
-                  initial={{ opacity: 0, x: -28, scale: 0.96 }}
-                  animate={{ opacity: 1, x: 0, scale: 1 }}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
                   whileTap={{ scale: 0.98 }}
                   transition={{
                     type: "spring",
-                    stiffness: 320,
-                    damping: 22,
-                    delay: idx * 0.045,
+                    stiffness: 350,
+                    damping: 24,
+                    delay: idx * 0.04,
                   }}
                   onClick={(e) => handleNavClick(e, item.id, item.haptic)}
                   className="font-display text-4xl sm:text-5xl uppercase text-[#f0e8dc] hover:text-[#ff4500] transition-colors py-4 border-b border-[#222]"
@@ -186,7 +189,7 @@ export const Navbar: React.FC = () => {
               ))}
             </nav>
 
-            <div className="mt-auto pb-10">
+            <div className="mt-auto pb-10 pt-8">
               <button
                 type="button"
                 onClick={() => {
