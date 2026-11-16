@@ -319,13 +319,13 @@ RULES:
           }}
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
-          className="group flex items-center gap-2.5 px-4 py-2.5 sm:px-5 sm:py-3.5 rounded-full bg-black text-white font-mono text-xs tracking-wider border border-[#ff4500]/60 shadow-[0_10px_30px_rgba(255,69,0,0.25)] hover:border-[#ff4500] hover:bg-[#ff4500] hover:text-black transition-all duration-300 cursor-pointer overflow-hidden"
+          className="group flex items-center gap-2 px-3 py-2 sm:px-5 sm:py-3.5 rounded-full bg-black text-white font-mono text-xs tracking-wider border border-[#ff4500]/60 shadow-[0_10px_30px_rgba(255,69,0,0.25)] hover:border-[#ff4500] hover:bg-[#ff4500] hover:text-black transition-all duration-300 cursor-pointer overflow-hidden"
           aria-label="Toggle @tirumala-assistant"
         >
           {isOpen ? (
             <X className="w-4 h-4" />
           ) : (
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-1.5">
               <div className="w-5 h-5 rounded-full bg-[#ff4500] flex items-center justify-center overflow-hidden p-[1.5px] border border-white/20 shrink-0">
                 <img 
                   src="/favicon.png" 
@@ -338,8 +338,13 @@ RULES:
               </div>
             </div>
           )}
-          <span className="font-mono uppercase font-bold tracking-widest text-[11px] sm:text-xs">
-            {isOpen ? "CLOSE" : "@TIRUMALA-ASSISTANT"}
+          <span className="font-mono uppercase font-bold tracking-widest text-[10px] sm:text-xs">
+            {isOpen ? "CLOSE" : (
+              <>
+                <span className="sm:hidden">@TIRU-AI</span>
+                <span className="hidden sm:inline">@TIRUMALA-ASSISTANT</span>
+              </>
+            )}
           </span>
         </motion.button>
       </div>

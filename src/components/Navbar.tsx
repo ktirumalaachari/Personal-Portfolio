@@ -97,38 +97,10 @@ export const Navbar: React.FC = () => {
           scrolled ? "bg-[#0c0c0c]/92 backdrop-blur-md border-b border-[#222]" : "bg-transparent"
         }`}
       >
-        <div className="w-full px-6 md:px-12 h-14 flex items-center justify-between">
-          {/* Left Navigation Links matching screenshot */}
-          <nav className="hidden md:flex items-center gap-9" aria-label="Primary navigation">
-            {NAV_ITEMS.map((item) => (
-              <a
-                key={item.id}
-                href={`#${item.id}`}
-                onClick={(e) => handleNavClick(e, item.id, item.haptic)}
-                className={navLinkClass(item.id)}
-              >
-                {item.label}
-              </a>
-            ))}
-          </nav>
-
-          {/* Right Action: Résumé ↗ Button */}
-          <div className="flex items-center gap-3 ml-auto">
-            <motion.button
-              type="button"
-              whileHover={{ scale: 1.04, y: -1 }}
-              whileTap={{ scale: 0.96 }}
-              transition={{ type: "spring", stiffness: 400, damping: 20 }}
-              onClick={() => {
-                navigator.vibrate?.(30);
-                setResumeModalOpen(true);
-              }}
-              className="hidden md:block btn-outline text-xs py-2 px-6 font-bold tracking-[0.16em] cursor-pointer"
-            >
-              RÉSUMÉ ↗
-            </motion.button>
-
-            {/* Mobile Menu Button */}
+        <div className="w-full px-4 sm:px-6 md:px-12 h-14 flex items-center justify-between">
+          {/* Left Element: Mobile Menu Toggle on mobile, Nav Links on desktop */}
+          <div className="flex items-center">
+            {/* Mobile Navigation Button (LEFT) */}
             <motion.button
               type="button"
               whileTap={{ scale: 0.9 }}
@@ -138,9 +110,44 @@ export const Navbar: React.FC = () => {
                 navigator.vibrate?.(30);
                 setMobileMenuOpen((prev) => !prev);
               }}
-              className="md:hidden text-[#c8bfb3] hover:text-[#ff4500] transition-colors p-2"
+              className="md:hidden text-[#c8bfb3] hover:text-[#ff4500] transition-colors p-2 -ml-2 cursor-pointer flex items-center justify-center focus:outline-none"
             >
-              {mobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
+              {mobileMenuOpen ? (
+                <X size={24} className="text-[#ff4500]" />
+              ) : (
+                <Menu size={24} />
+              )}
+            </motion.button>
+
+            {/* Desktop Navigation Links (LEFT) */}
+            <nav className="hidden md:flex items-center gap-9" aria-label="Primary navigation">
+              {NAV_ITEMS.map((item) => (
+                <a
+                  key={item.id}
+                  href={`#${item.id}`}
+                  onClick={(e) => handleNavClick(e, item.id, item.haptic)}
+                  className={navLinkClass(item.id)}
+                >
+                  {item.label}
+                </a>
+              ))}
+            </nav>
+          </div>
+
+          {/* Right Element: Résumé ↗ Button (RIGHT on BOTH mobile and desktop) */}
+          <div className="flex items-center ml-auto">
+            <motion.button
+              type="button"
+              whileHover={{ scale: 1.04, y: -1 }}
+              whileTap={{ scale: 0.96 }}
+              transition={{ type: "spring", stiffness: 400, damping: 20 }}
+              onClick={() => {
+                navigator.vibrate?.(30);
+                setResumeModalOpen(true);
+              }}
+              className="btn-outline text-[11px] md:text-xs py-1.5 md:py-2 px-3.5 md:px-6 font-bold tracking-[0.14em] md:tracking-[0.16em] cursor-pointer"
+            >
+              RÉSUMÉ ↗
             </motion.button>
           </div>
         </div>
