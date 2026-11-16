@@ -1,6 +1,6 @@
 <div align="center">
 <!-- HEADER BANNER -->
-<img src="https://capsule-render.vercel.app/api?type=waving&color=FF4500&height=220&section=header&text=K%20TIRUMALA%20ACHARI&fontSize=56&fontColor=FFFFFF&fontAlignY=38&desc=Full%20Stack%20%26%20AI%20Software%20Engineer%20%7C%20Official%20Portfolio&descAlignY=58&descSize=20&animation=fadeIn" width="100%"/>
+<img src="https://capsule-render.vercel.app/api?type=waving&color=FF6B35&height=200&section=header&text=K%20Tirumala%20Achari&fontSize=60&fontColor=FFFFFF&fontAlignY=38&desc=Full%20Stack%20Developer%20%7C%20Portfolio&descAlignY=58&descSize=22&animation=fadeIn" width="100%"/>
 <br/>
 
 <!-- BADGES -->
