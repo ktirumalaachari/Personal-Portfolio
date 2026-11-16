@@ -119,7 +119,7 @@ const Footer = () => {
               Twitter (X) ↗
             </a>
             <a
-              href="https://ktirumalaachari.vercel.app"
+              href="https://ktirumala.vercel.app"
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => {

@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.ktirumalaachari.me/sitemap.xml
+Sitemap: https://ktirumala.vercel.app/sitemap.xml

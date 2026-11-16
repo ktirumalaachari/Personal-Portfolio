@@ -19,7 +19,7 @@
   <img src="https://img.shields.io/badge/License-MIT-green?style=for-the-badge" alt="License"/>
 </p>
 <p>
-  <a href="https://ktirumalaachari.vercel.app"><strong>🌐 Live Portfolio</strong></a> •
+  <a href="https://ktirumala.vercel.app"><strong>🌐 Live Portfolio</strong></a> •
   <a href="https://github.com/ktirumalaachari"><strong>🐙 GitHub Profile</strong></a> •
   <a href="https://www.linkedin.com/in/k-tirumala-achari-921106307/"><strong>💼 LinkedIn</strong></a> •
   <a href="mailto:ktirumalaachari@gmail.com"><strong>✉️ Email Me</strong></a>
@@ -89,7 +89,7 @@ I specialize in building production-grade SaaS platforms, real-time telemetry sy
 | **05** | **CodeFlow AI** | Next.js 15, FastAPI, Python 3.12, Monaco Editor, Gemini AI, Framer Motion | [Live Demo ↗](https://codeflow-ai-mu.vercel.app) | [Repository ↗](https://github.com/ktirumalaachari/CodeFlow-AI) |
 | **06** | **WayPoint** | React 18, Vite, FastAPI, Python, Supabase, PostgreSQL, Groq AI | [Live Demo ↗](https://way-point-beryl.vercel.app) | [Repository ↗](https://github.com/ktirumalaachari/WayPoint) |
 | **07** | **Credit Card Fraud Detection** | Python, Flask, XGBoost, LightGBM, CatBoost, Random Forest, scikit-learn, PWA | [Live Demo ↗](https://fraud-detection-sjkm.onrender.com) | [Repository ↗](https://github.com/ktirumalaachari/Credit-Card-Fraud-Detection-Using-Machine-Learning) |
-| **08** | **Personal Portfolio (SSR)** | React 19, TypeScript, TanStack Start, Nitro SSR, Tailwind CSS v4, Resend | [Live Demo ↗](https://ktirumalaachari.vercel.app) | [Repository ↗](https://github.com/ktirumalaachari/Personal-Portfolio) |
+| **08** | **Personal Portfolio (SSR)** | React 19, TypeScript, TanStack Start, Nitro SSR, Tailwind CSS v4, Resend | [Live Demo ↗](https://ktirumala.vercel.app) | [Repository ↗](https://github.com/ktirumalaachari/Personal-Portfolio) |
 
 ---
 
@@ -193,7 +193,7 @@ npm run preview
 
 ## 📬 Connect with Me
 
-- **Portfolio**: [https://ktirumalaachari.vercel.app](https://ktirumalaachari.vercel.app)
+- **Portfolio**: [https://ktirumala.vercel.app](https://ktirumala.vercel.app)
 - **Email**: [ktirumalaachari@gmail.com](mailto:ktirumalaachari@gmail.com)
 - **LinkedIn**: [linkedin.com/in/k-tirumala-achari-921106307](https://www.linkedin.com/in/k-tirumala-achari-921106307/)
 - **GitHub**: [github.com/ktirumalaachari](https://github.com/ktirumalaachari)

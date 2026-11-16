@@ -87,7 +87,7 @@ const projects = [
     stack: "React 19 / TypeScript / TanStack Start / Nitro SSR / Tailwind v4 / Framer Motion / Resend",
     description: "Editorial full-stack developer portfolio built with React 19, TypeScript, Vite, Tailwind CSS v4, and TanStack Start / Router on Nitro SSR. Features a 3D curved showcase arc, interactive radial skills wheel, spring-physics animations, interactive lanyard ID card, and live resume request API.",
     links: {
-      live: "https://ktirumalaachari.vercel.app",
+      live: "https://ktirumala.vercel.app",
       code: "https://github.com/ktirumalaachari/Personal-Portfolio"
     },
     image: "/images/projects/personal-portfolio.jpg",
