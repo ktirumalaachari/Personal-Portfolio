@@ -1,0 +1,374 @@
+/* ========== MARQUEE - Pure CSS GPU Animation ========== */
+@keyframes marquee-scroll {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.marquee-selected-works {
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+
+.marquee-selected-works__track {
+  display: flex;
+  white-space: nowrap;
+  align-items: center;
+  animation: marquee-scroll 25s linear infinite;
+  will-change: transform;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.marquee-selected-works__segment {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.marquee-selected-works__text {
+  font-size: 13vw;
+  font-weight: 500;
+  line-height: 0.8;
+  letter-spacing: -0.05em;
+}
+
+.marquee-selected-works__dash {
+  font-size: 13vw;
+  font-weight: 300;
+  margin: 0 3vw;
+  transform: translateY(-2px);
+}
+
+@media (max-width: 1023px) {
+  .marquee-selected-works__track {
+    animation-duration: 10s;
+  }
+}
+
+/* ========== END MARQUEE ========== */
+
+/* ScrollStack.css - Neo-Brutalist Starry Design */
+
+.scroll-stack-scroller {
+  background-color: #0c0c0c;
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+}
+
+.scroll-stack-inner {
+  padding: 10vh 0 50vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  perspective: 1500px;
+  will-change: transform;
+}
+
+/* The wrapper that StarBorder creates */
+.scroll-stack-card {
+  width: 92%;
+  max-width: 1200px;
+  height: auto;
+  max-height: 78vh;
+  margin-bottom: 2rem;
+  background: transparent !important;
+  /* Hide default bg */
+  border: none !important;
+  /* Hide default border */
+  border-radius: 60px;
+  display: block;
+  /* Ensure it stays block for offset calculations */
+  position: relative;
+  will-change: transform;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+/* Transfer original card styling to the inner container of StarBorder */
+.scroll-stack-card>.inner-content {
+  background-color: #141414 !important;
+  border: 1px solid rgba(240, 232, 220, 0.12) !important;
+  border-radius: 60px !important;
+  padding: 2.5rem !important;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  text-align: left;
+  /* Override StarBorder default center text */
+}
+
+/* --- HEADER AREA --- */
+.card-top-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.id-brand-group {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.huge-number {
+  font-family: 'Cabinet Grotesk', 'Inter', sans-serif;
+  font-size: 5rem;
+  font-weight: 900;
+  line-height: 0.8;
+  color: #ff4500;
+  text-shadow: 0 0 30px rgba(255, 69, 0, 0.3);
+}
+
+.label {
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  color: #f0e8dc;
+  font-weight: 900;
+  letter-spacing: 0.02em;
+  display: block;
+}
+
+/* Updated tech stack text color */
+.client-name {
+  font-size: 0.85rem;
+  color: #c8bfb3;
+  font-weight: 500;
+  opacity: 0.95;
+}
+
+/* --- STAR BUTTON STYLE --- */
+.live-btn-star {
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.live-btn-star:hover {
+  transform: scale(1.05);
+}
+
+.live-btn-star>.inner-content {
+  background: #ff4500 !important;
+  border-radius: 100px !important;
+  padding: 0.8rem 2rem !important;
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: #0c0c0c !important;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  box-shadow: 0 0 20px rgba(255, 69, 0, 0.35);
+  transition: all 0.3s ease;
+}
+
+.live-btn-star:hover>.inner-content {
+  background: #ff5722 !important;
+  box-shadow: 0 0 30px rgba(255, 69, 0, 0.6);
+}
+
+/* --- CONTENT GRID (Image + Description) --- */
+.content-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 2rem;
+  height: min(350px, 40vh);
+  flex: 1;
+  align-items: stretch;
+}
+
+.main-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background-color: #0c0c0c;
+  border: 1px solid rgba(240, 232, 220, 0.08);
+  border-radius: 40px;
+  filter: grayscale(0.6);
+  transition: filter 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.scroll-stack-card:hover .main-image {
+  filter: grayscale(0);
+}
+
+.project-description {
+  display: flex;
+  align-items: center;
+  padding: 1.5rem;
+}
+
+/* Updated project description text color */
+.project-description p {
+  font-size: 1.15rem;
+  line-height: 1.7;
+  color: #c8bfb3;
+  font-weight: 400;
+  margin: 0;
+  opacity: 0.95;
+}
+
+/* --- RESPONSIVE STYLES --- */
+@media (max-width: 1024px) {
+  .content-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+
+  .project-description p {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .scroll-stack-card {
+    width: 95%;
+    max-height: none;
+    border-radius: 24px;
+    margin-bottom: 1.5rem;
+  }
+
+  .scroll-stack-card > .inner-content {
+    border-radius: 24px !important;
+    padding: 1.25rem !important;
+    gap: 0.85rem;
+  }
+
+  .card-top-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+
+  .id-brand-group {
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    align-items: flex-start;
+  }
+
+  .huge-number {
+    font-size: 2.8rem;
+  }
+
+  .label {
+    font-size: 1rem;
+    line-height: 1.2;
+  }
+
+  .client-name {
+    font-size: 0.78rem;
+    line-height: 1.35;
+    word-break: break-word;
+  }
+
+  .live-btn-star {
+    align-self: flex-start;
+  }
+
+  .live-btn-star > .inner-content {
+    padding: 0.5rem 1.2rem !important;
+    font-size: 0.68rem;
+  }
+
+  .content-grid {
+    grid-template-columns: 1fr;
+    height: auto;
+    gap: 0.75rem;
+  }
+
+  .main-image {
+    height: auto;
+    aspect-ratio: 16/9;
+    border-radius: 16px;
+  }
+
+  .project-description {
+    padding: 0.25rem 0;
+  }
+
+  .project-description p {
+    font-size: 0.85rem;
+    line-height: 1.5;
+  }
+}
+
+@media (max-width: 480px) {
+  .scroll-stack-card {
+    width: 98%;
+    border-radius: 20px;
+  }
+
+  .scroll-stack-card > .inner-content {
+    border-radius: 20px !important;
+    padding: 0.9rem !important;
+    gap: 0.65rem;
+  }
+
+  .id-brand-group {
+    gap: 0.5rem;
+  }
+
+  .huge-number {
+    font-size: 2.2rem;
+  }
+
+  .label {
+    font-size: 0.88rem;
+  }
+
+  .client-name {
+    font-size: 0.72rem;
+  }
+
+  .live-btn-star > .inner-content {
+    padding: 0.4rem 0.9rem !important;
+    font-size: 0.65rem;
+  }
+
+  .main-image {
+    height: auto;
+    aspect-ratio: 16/9;
+    border-radius: 12px;
+  }
+
+  .project-description p {
+    font-size: 0.78rem;
+    line-height: 1.4;
+  }
+}
+
+@media (max-width: 360px) {
+  .scroll-stack-card > .inner-content {
+    padding: 0.75rem !important;
+    gap: 0.5rem;
+  }
+
+  .huge-number {
+    font-size: 1.8rem;
+  }
+
+  .label {
+    font-size: 0.8rem;
+  }
+
+  .client-name {
+    font-size: 0.68rem;
+  }
+
+  .main-image {
+    height: auto;
+    aspect-ratio: 16/9;
+  }
+
+  .project-description p {
+    font-size: 0.72rem;
+  }
+}

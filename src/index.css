@@ -1,0 +1,827 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Editorial Minimalist Design System
+   Inspired by: Bold serif typography, pure white backgrounds, generous whitespace
+   All colors in HSL format
+*/
+
+@layer base {
+  :root {
+    --brand-bg: #0c0c0c;
+    --brand-bg2: #141414;
+    --brand-bg3: #1c1c1c;
+    --brand-cream: #f0e8dc;
+    --brand-cream2: #c8bfb3;
+    --brand-cream3: #7a746d;
+    --brand-orange: #ff4500;
+    --brand-orange2: #cc3600;
+    --brand-yellow: #ffd600;
+
+    /* Core palette - Obsidian and Warm Cream */
+    --background: 0 0% 4.7%;
+    --foreground: 36 33% 90%;
+
+    /* Card surfaces */
+    --card: 0 0% 7.8%;
+    --card-foreground: 36 33% 90%;
+
+    /* Popover */
+    --popover: 0 0% 7.8%;
+    --popover-foreground: 36 33% 90%;
+
+    /* Primary - Vibrant Safety Orange */
+    --primary: 16 100% 50%;
+    --primary-foreground: 0 0% 4.7%;
+
+    /* Secondary - Obsidian surface */
+    --secondary: 0 0% 11%;
+    --secondary-foreground: 36 33% 90%;
+
+    /* Muted - For subtle cream text */
+    --muted: 0 0% 11%;
+    --muted-foreground: 33 6% 45%;
+
+    /* Accent - Safety Orange */
+    --accent: 16 100% 50%;
+    --accent-foreground: 0 0% 4.7%;
+
+    /* Destructive */
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 36 33% 90%;
+
+    /* Borders - Subtle Warm Cream hairlines */
+    --border: 36 33% 90% / 0.12;
+    --input: 36 33% 90% / 0.15;
+    --ring: 16 100% 50%;
+
+    --radius: 0.5rem;
+
+    /* Sidebar */
+    --sidebar-background: 0 0% 4.7%;
+    --sidebar-foreground: 36 33% 90%;
+    --sidebar-primary: 16 100% 50%;
+    --sidebar-primary-foreground: 0 0% 4.7%;
+    --sidebar-accent: 0 0% 11%;
+    --sidebar-accent-foreground: 36 33% 90%;
+    --sidebar-border: 36 33% 90% / 0.12;
+    --sidebar-ring: 16 100% 50%;
+
+    /* Typography */
+    --font-serif: 'Inter', system-ui, sans-serif;
+    --font-sans: 'Inter', system-ui, sans-serif;
+
+    /* Spacing */
+    --section-padding: 8rem;
+  }
+
+  .dark {
+    --background: 0 0% 4.7%;
+    --foreground: 36 33% 90%;
+    --card: 0 0% 7.8%;
+    --card-foreground: 36 33% 90%;
+    --popover: 0 0% 7.8%;
+    --popover-foreground: 36 33% 90%;
+    --primary: 16 100% 50%;
+    --primary-foreground: 0 0% 4.7%;
+    --secondary: 0 0% 11%;
+    --secondary-foreground: 36 33% 90%;
+    --muted: 0 0% 11%;
+    --muted-foreground: 33 6% 45%;
+    --accent: 16 100% 50%;
+    --accent-foreground: 0 0% 4.7%;
+    --destructive: 0 62% 30%;
+    --destructive-foreground: 36 33% 90%;
+    --border: 36 33% 90% / 0.12;
+    --input: 36 33% 90% / 0.15;
+    --ring: 16 100% 50%;
+    --sidebar-background: 0 0% 4.7%;
+    --sidebar-foreground: 36 33% 90%;
+    --sidebar-primary: 16 100% 50%;
+    --sidebar-primary-foreground: 0 0% 4.7%;
+    --sidebar-accent: 0 0% 11%;
+    --sidebar-accent-foreground: 36 33% 90%;
+    --sidebar-border: 36 33% 90% / 0.12;
+    --sidebar-ring: 16 100% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    /* Removed scroll-behavior: smooth — Lenis handles this now */
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: clip;
+    background-color: #0c0c0c !important;
+    color: #f0e8dc !important;
+  }
+
+  body {
+    background-color: #0c0c0c !important;
+    color: #f0e8dc !important;
+    font-family: var(--font-sans);
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: clip;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  #root {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    overflow-x: clip;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-serif);
+  }
+}
+
+@layer components {
+
+  /* Editorial link with underline animation */
+  .editorial-link {
+    @apply relative inline-block text-foreground uppercase tracking-widest text-sm font-medium;
+  }
+
+  .editorial-link::after {
+    content: '';
+    @apply absolute bottom-0 left-0 w-full h-px bg-foreground;
+    transform: scaleX(1);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+  }
+
+  .editorial-link:hover::after {
+    transform: scaleX(0);
+    transform-origin: right;
+  }
+
+  /* Large serif heading */
+  .heading-editorial {
+    font-family: var(--font-serif);
+    @apply text-foreground leading-tight tracking-tight;
+  }
+
+  /* Italic emphasis - key design element */
+  .italic-emphasis {
+    font-family: var(--font-serif);
+    @apply italic;
+  }
+}
+
+/* Footer Particle Explosion Styles */
+footer .explosion-container {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 200%;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 10;
+}
+
+footer .explosion-particle-img {
+  position: absolute;
+  bottom: -200px;
+  left: 50%;
+  width: 150px;
+  border-radius: 1rem;
+  height: auto;
+  object-fit: cover;
+  transform: translateX(-50%);
+  will-change: transform;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 8px 10px -6px rgba(0, 0, 0, 0.5);
+}
+
+@media (max-width: 1000px) {
+  footer .explosion-container {
+    display: none;
+  }
+}
+
+/* ========== CUSTOM SLEEK SCROLLBAR SYSTEM ========== */
+
+/* Global custom scrollbar for desktop */
+::selection {
+  background: #ff4500;
+  color: #f0e8dc;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0c0c0c;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 69, 0, 0.4);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #ff4500;
+}
+
+/* Hide native scrollbar on mobile/tablet devices site-wide while preserving touch inertia scroll */
+@media (max-width: 768px) {
+  ::-webkit-scrollbar {
+    width: 0px;
+    height: 0px;
+    display: none;
+  }
+  * {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+/* Premium Transparent Custom Scrollbar for Navigation Menu Overlay */
+.menu-overlay-scroller {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.25) transparent;
+  -webkit-overflow-scrolling: touch;
+}
+
+.menu-overlay-scroller::-webkit-scrollbar {
+  width: 4px;
+}
+
+.menu-overlay-scroller::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.menu-overlay-scroller::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 9999px;
+  transition: background 0.3s ease;
+}
+
+.menu-overlay-scroller::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.45);
+}
+
+@media (max-width: 768px) {
+  .menu-overlay-scroller {
+    scrollbar-width: none !important;
+    -ms-overflow-style: none !important;
+  }
+  .menu-overlay-scroller::-webkit-scrollbar {
+    display: none !important;
+    width: 0px !important;
+  }
+}
+
+/* ==========================================================================
+   AUTHENTIC IDENTITY CARD HERO STYLES & LANYARD PHYSICS
+   ========================================================================== */
+
+.font-display {
+  font-family: "Anton", sans-serif;
+}
+
+.font-cond {
+  font-family: "Barlow Condensed", sans-serif;
+}
+
+.font-mono {
+  font-family: "JetBrains Mono", monospace;
+}
+
+.font-body {
+  font-family: "Barlow", sans-serif;
+}
+
+/* Primary and Outline Hero Buttons */
+.btn-primary {
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 12px 28px;
+  background: #ff4500;
+  color: #0c0c0c;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  transition:
+    background 0.22s ease,
+    transform 0.22s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.22s ease;
+}
+
+.btn-primary:hover {
+  background: #cc3600;
+  color: #f0e8dc;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(255, 69, 0, 0.35);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+.btn-outline {
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 11px 27px;
+  background: transparent;
+  color: #f0e8dc;
+  border: 1px solid rgba(240, 232, 220, 0.25);
+  cursor: pointer;
+  border-radius: 4px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  transition:
+    border-color 0.22s ease,
+    color 0.22s ease,
+    transform 0.22s cubic-bezier(0.16, 1, 0.3, 1),
+    background 0.22s ease;
+}
+
+.btn-outline:hover {
+  border-color: #ff4500;
+  color: #ff4500;
+  background: rgba(255, 69, 0, 0.08);
+  transform: translateY(-2px);
+}
+
+.btn-outline:active {
+  transform: translateY(0);
+}
+
+/* Lanyard Realistic Swinging Physics */
+@keyframes swingCard {
+  0%,
+  100% {
+    transform: rotate(-1.6deg) translateZ(0);
+  }
+  50% {
+    transform: rotate(1.6deg) translateY(-4px) translateZ(0);
+  }
+}
+
+.lanyard-card-wrapper {
+  width: 100%;
+  max-width: 210px;
+  background: #111;
+  border: 1px solid #252525;
+  border-top: 3px solid #e84c00;
+  margin-top: -4px;
+  position: relative;
+  z-index: 3;
+  animation: swingCard 2.5s ease-in-out infinite;
+  transform-origin: top center;
+  border-radius: 4px;
+  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.8);
+}
+
+.lanyard-card-wrapper::before {
+  content: "";
+  position: absolute;
+  top: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 16px;
+  height: 10px;
+  background: #1a1a1a;
+  border: 1px solid #e84c00;
+  border-radius: 2px;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.8);
+  z-index: 5;
+}
+
+.lanyard-card-wrapper::after {
+  content: "";
+  position: absolute;
+  top: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 8px;
+  height: 6px;
+  background: #0a0a0a;
+  border-radius: 1px;
+  box-shadow: inset 0 0 2px #e84c00;
+  z-index: 6;
+}
+
+.lanyard-card-inner {
+  padding: 12px;
+}
+
+.lanyard-card-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 8px;
+}
+
+.lanyard-card-inst {
+  font-family: "Space Mono", monospace;
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #e84c00;
+  display: block;
+  margin-bottom: 2px;
+  font-weight: 700;
+}
+
+.lanyard-card-type {
+  font-family: "Space Mono", monospace;
+  font-size: 8.5px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: #c0c0c0;
+}
+
+.lanyard-card-seal {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 1.5px solid #e84c00;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  color: #e84c00;
+  font-weight: 700;
+}
+
+.lanyard-card-photo {
+  width: 100%;
+  aspect-ratio: 1;
+  background: #1e1e1e;
+  overflow: hidden;
+  margin-bottom: 10px;
+  border-radius: 2px;
+  border: 1px solid rgba(255, 69, 0, 0.25);
+}
+
+.lanyard-card-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.lanyard-card-name {
+  font-family: "Inter", sans-serif;
+  font-weight: 800;
+  font-size: 13px;
+  color: #f0ece4;
+  margin-bottom: 3px;
+  letter-spacing: 0.02em;
+}
+
+.lanyard-card-role {
+  font-family: "Inter", sans-serif;
+  font-weight: 800;
+  font-size: 13px;
+  color: #e84c00;
+  margin-bottom: 3px;
+}
+
+.lanyard-card-chips {
+  display: flex;
+  gap: 5px;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+}
+
+.lanyard-card-chip {
+  font-family: "Space Mono", monospace;
+  font-size: 6.5px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  border: 1px solid #2a2a2a;
+  color: #c0c0c0;
+  border-radius: 2px;
+}
+
+.lanyard-card-chip.lit {
+  border-color: #e84c00;
+  color: #e84c00;
+  background: rgba(232, 76, 0, 0.08);
+}
+
+.lanyard-card-barcode {
+  border-top: 1px solid #1c1c1c;
+  padding-top: 8px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+.lanyard-card-bars {
+  display: flex;
+  gap: 1.5px;
+  align-items: flex-end;
+  height: 26px;
+}
+
+.lanyard-bar {
+  background: #2e2e2e;
+  width: 2px;
+  border-radius: 1px;
+}
+
+.lanyard-bar.bh {
+  height: 100%;
+}
+
+.lanyard-bar.bm {
+  height: 68%;
+}
+
+.lanyard-bar.bl {
+  height: 44%;
+}
+
+.lanyard-bar.ba {
+  height: 82%;
+  background: #e84c00;
+  opacity: 0.75;
+}
+
+.lanyard-card-serial {
+  font-family: "Space Mono", monospace;
+  font-size: 10px;
+  letter-spacing: 1px;
+  color: #e84c00;
+  text-align: right;
+  line-height: 1.6;
+}
+
+@media (max-width: 480px) {
+  .lanyard-card-inner {
+    padding: 10px;
+  }
+  .lanyard-card-name {
+    font-size: 11px;
+  }
+  .lanyard-card-role {
+    font-size: 9.5px;
+  }
+  .lanyard-card-chip {
+    font-size: 7px;
+    padding: 2px 5px;
+  }
+  .lanyard-card-serial {
+    font-size: 8px;
+  }
+}
+
+/* Hero Entrance Animations */
+@keyframes heroWordUp {
+  0% {
+    opacity: 0;
+    transform: translateY(52px) scaleY(1.06);
+  }
+  68% {
+    opacity: 1;
+    transform: translateY(-4px) scaleY(0.99);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scaleY(1);
+  }
+}
+
+@keyframes heroBounceIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px) scale(0.92);
+  }
+  62% {
+    opacity: 1;
+    transform: translateY(-3px) scale(1.025);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes heroLanyardDrop {
+  0% {
+    opacity: 0;
+    transform: translateY(-28px) scale(0.94) rotate(-3deg);
+  }
+  58% {
+    opacity: 1;
+    transform: translateY(6px) scale(1.015) rotate(1.8deg);
+  }
+  82% {
+    transform: translateY(-2px) scale(0.998) rotate(-0.6deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1) rotate(0deg);
+  }
+}
+
+@keyframes heroFadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  70% {
+    opacity: 1;
+    transform: translateY(-2px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes heroFadeRight {
+  0% {
+    opacity: 0;
+    transform: translateX(22px);
+  }
+  68% {
+    opacity: 1;
+    transform: translateX(-3px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes heroFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes heroBarGrow {
+  0% {
+    transform: scaleX(0);
+  }
+  68% {
+    transform: scaleX(1.06);
+  }
+  100% {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes heroPulseLine {
+  0%,
+  100% {
+    transform: scaleX(1);
+    opacity: 0.85;
+  }
+  50% {
+    transform: scaleX(1.45);
+    opacity: 1;
+  }
+}
+
+.hero-word-up {
+  animation: heroWordUp 0.62s cubic-bezier(0.22, 1, 0.36, 1) both;
+  will-change: transform, opacity;
+}
+
+.hero-bounce-in {
+  animation: heroBounceIn 0.55s cubic-bezier(0.34, 1.45, 0.64, 1) both;
+  will-change: transform, opacity;
+}
+
+.hero-lanyard-drop {
+  transform-origin: top center;
+  animation: heroLanyardDrop 0.85s cubic-bezier(0.22, 1, 0.36, 1) both;
+  will-change: transform, opacity;
+}
+
+.hero-fade-up {
+  animation: heroFadeUp 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+  will-change: transform, opacity;
+}
+
+.hero-fade-right {
+  animation: heroFadeRight 0.52s cubic-bezier(0.22, 1, 0.36, 1) both;
+  will-change: transform, opacity;
+}
+
+.hero-fade-in {
+  animation: heroFadeIn 0.42s ease-out both;
+}
+
+.hero-bar-grow {
+  transform-origin: left;
+  animation: heroBarGrow 0.68s cubic-bezier(0.22, 1, 0.36, 1) both;
+  will-change: transform;
+}
+
+.hero-scroll-pulse {
+  transform-origin: left center;
+  animation: heroPulseLine 2.1s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+/* Navbar Entrance & Hover-line */
+.hero-nav-in {
+  animation: heroNavIn 0.45s cubic-bezier(0.34, 1.4, 0.64, 1) both;
+  will-change: transform, opacity;
+}
+
+@keyframes heroNavIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-14px);
+  }
+  70% {
+    opacity: 1;
+    transform: translateY(2px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hover-line {
+  position: relative;
+}
+
+.hover-line::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 0;
+  height: 2px;
+  background: #ff4500;
+  transition: width 0.32s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hover-line:hover::after,
+.hover-line-active::after {
+  width: 100%;
+}
+
+@keyframes openingLoaderSweep {
+  0% {
+    transform: scaleX(0);
+    opacity: 1;
+  }
+  65% {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scaleX(1);
+    opacity: 0;
+  }
+}
+
+.opening-loader-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  z-index: 60;
+  pointer-events: none;
+  transform-origin: left center;
+  background: linear-gradient(90deg, #ff4500 0%, #ffd600 75%, #fff5d6 100%);
+  box-shadow: 0 0 12px rgba(255, 69, 0, 0.55);
+  animation: openingLoaderSweep 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  will-change: transform, opacity;
+}

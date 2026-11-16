@@ -1,0 +1,214 @@
+.menu__item {
+    position: relative;
+    overflow: hidden;
+    height: clamp(70px, 10.5vh, 105px);
+    will-change: opacity, transform;
+    contain: layout paint;
+}
+
+.menu__item-link {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    font-size: clamp(18px, 2.8vh, 28px);
+    font-weight: 900;
+    padding-left: 10%;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #f0e8dc;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    transition: opacity 0.3s ease, color 0.3s ease;
+    /* Ensure text and arrow stay aligned */
+    gap: 1.5rem;
+}
+
+.menu__item:hover .menu__item-link {
+    color: #ff4500;
+}
+
+.menu__item-arrow {
+    width: clamp(18px, 2.8vh, 28px);
+    height: clamp(18px, 2.8vh, 28px);
+    /* Optional: Slight rotation logic if you want to animate it later */
+    transform-origin: center;
+    transition: transform 0.3s ease;
+}
+
+/* Dim the text when open */
+.menu__item.is-open .menu__item-link {
+    opacity: 0.1;
+}
+
+/* On Desktop: Dim text on hover too */
+@media (hover: hover) {
+    .menu__item:hover .menu__item-link {
+        opacity: 0.1;
+    }
+}
+
+.marquee {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform: translateY(101%);
+    transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    display: flex;
+    align-items: center;
+    pointer-events: none;
+    z-index: 2;
+    cursor: pointer;
+    will-change: transform;
+}
+
+@media (hover: hover) {
+    .menu__item:hover .marquee {
+        transform: translateY(0);
+        pointer-events: all;
+    }
+}
+
+.menu__item.is-open .marquee {
+    transform: translateY(0);
+    pointer-events: all;
+}
+
+.marquee__inner {
+    display: flex;
+    white-space: nowrap;
+    height: 100%;
+    align-items: center;
+    will-change: transform;
+    transform: translateZ(0);
+}
+
+/* --- DESKTOP DEFAULTS --- */
+.marquee__part {
+    display: flex;
+    align-items: center;
+    padding-right: 6vw;
+    border-right: 2px solid rgba(240, 232, 220, 0.15);
+}
+
+.marquee__icon-box {
+    display: flex;
+    align-items: center;
+    margin: 0 4vw;
+    gap: 1.5rem;
+}
+
+.marquee__icon {
+    height: clamp(36px, 5.5vh, 52px);
+    width: auto;
+}
+
+.marquee__text {
+    color: #f0e8dc;
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: clamp(18px, 2.8vh, 28px);
+    text-transform: uppercase;
+}
+
+.marquee__icon[alt="GitHub"],
+.marquee__icon[alt="Express"] {
+    filter: invert(1) brightness(2);
+}
+
+/* --- TABLET SPECIFIC (Between 769px and 1024px) --- */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .marquee__part {
+        /* Reduce gap between loop iterations on tablet */
+        padding-right: 4vw;
+    }
+
+    .marquee__icon-box {
+        /* Tighter margin between different skills */
+        margin: 0 3vw;
+        /* Clearer separation between Icon and Text */
+        gap: 1.2rem;
+    }
+
+    .marquee__icon {
+        height: 4vh;
+        /* Slightly smaller icon to fit nicely */
+    }
+
+    .marquee__text {
+        font-size: 2.2vh;
+        /* Slightly smaller text */
+    }
+}
+
+/* --- MOBILE SPECIFIC (Phones) --- */
+@media (max-width: 768px) {
+    .menu__item {
+        height: 76px;
+    }
+
+    .menu__item-link {
+        font-size: clamp(14px, 4.5vw, 18px);
+        padding-left: 20px;
+        gap: 10px;
+        /* Smaller gap for arrow on phone */
+    }
+
+    .menu__item-arrow {
+        width: 18px;
+        height: 18px;
+    }
+
+    .marquee__part {
+        padding-right: 40px;
+    }
+
+    .marquee__icon-box {
+        margin: 0 30px;
+        gap: 15px;
+    }
+
+    .marquee__icon {
+        height: 36px;
+    }
+
+    .marquee__text {
+        font-size: 17px;
+    }
+}
+
+/* --- ULTRA SMALL PHONES (e.g. Galaxy Fold at 270px) --- */
+@media (max-width: 340px) {
+    .menu__item {
+        height: 54px;
+    }
+
+    .menu__item-link {
+        font-size: 13px;
+        padding-left: 12px;
+        gap: 6px;
+    }
+
+    .menu__item-arrow {
+        width: 14px;
+        height: 14px;
+    }
+
+    .marquee__part {
+        padding-right: 20px;
+    }
+
+    .marquee__icon-box {
+        margin: 0 16px;
+        gap: 8px;
+    }
+
+    .marquee__icon {
+        height: 24px;
+    }
+
+    .marquee__text {
+        font-size: 13px;
+    }
+}
